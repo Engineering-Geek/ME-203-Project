@@ -55,8 +55,19 @@ def main():
     # data = fig2array(fig=fig)
     # print(np.shape(data))
 
-    eqn2 = position_equation.subs(k, 1).subs(m, 1).subs(x0, 0)
-    sympy.plotting.plot3d(eqn2)
+    eqn2 = position_equation.subs(v0, 1).subs(m, 1).subs(x0, 0)
+    plt = sympy.plotting.plot3d(
+        eqn2,
+        (t, 0, 20), (k, -10, 10),
+        xlabel="Time (t)", ylabel="Spring Constant (k)", zlabel="Distance from Starting Point",
+        show=True
+    ).save("D:\\Data\\203-project\\time-k-graph1.png")
+    plt2 = sympy.plotting.plot3d(
+        eqn2,
+        (t, 0, 20), (k, -10, 0),
+        xlabel="Time (t)", ylabel="Spring Constant (k)", zlabel="Distance from Starting Point",
+        show=True
+    ).save("D:\\Data\\203-project\\time-k-graph2.png")
 
 
 if __name__ == '__main__':
